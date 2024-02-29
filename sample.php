@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<link rel="stylesheet" href="sample.css">
+<link rel="stylesheet" href="css/sample.css">
 <title>オセロ</title>
 </head>
 <body>
