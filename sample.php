@@ -5,7 +5,7 @@
 <title>オセロ</title>
 </head>
 <body>
-<script src="jquery-3.4.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 var hantei1 = [28, 35];
 var hantei2 = [27, 36];
@@ -796,7 +796,7 @@ function whiteCheck(black, white){
     </div>
 </form>
 <?php
-require_once('Osero.php');
+require_once('osero.php');
 $field[][] = "";
 $result[][] = "";
 $num = 0;
