@@ -4,20 +4,26 @@ body{
 #sample{
     display: inline-block;
     text-align: left;
+    font-size: 20px;
 }
-#sample#text{
+#submit{
     display: inline-block;
-    text-align: left;
+    position: relative;
+    top:-3px;
+    margin-left: 5px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-size: 15px;
 }
 button{
     display: inline-block;
     background-color: green;
-    border: solid 1px black;
-    width: 50px;
-    height: 50px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    font-size: 50px;
+    border: solid 2px black;
+    width: 100px;
+    height: 100px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 100px;
 }
 button:hover{
     background-color: #d3d3d3;
