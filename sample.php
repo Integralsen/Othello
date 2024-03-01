@@ -140,14 +140,14 @@ function player2(num){
                 //count--;
                 alert('cpuはパスです!');
             }else{
-                result();
+                //result();
                 hantei2.push(array['num']);
                 changewhite = whiteCheck(hantei1, hantei2);
                 for(var i=0; i<changewhite.length; i++){
                     hantei1.splice($.inArray(changewhite[i], hantei1), 1);
                     hantei2.push(changewhite[i]);
                 }
-                result();
+                //result();
             }
         }
     }else{
@@ -172,20 +172,21 @@ function player2(num){
                 //count--;
                 alert('cpuはパスです!');
             }else{
-                result();
+                //result();
                 hantei1.push(array['num']);
                 changeblack = blackCheck(hantei1, hantei2);
                 for(var i=0; i<changeblack.length; i++){
                     hantei2.splice($.inArray(changeblack[i], hantei2), 1);
                     hantei1.push(changeblack[i]);
                 }
-                result();
+                //result();
             }
         }
     }
     //console.log(hantei1);
     //console.log(hantei2);
     view();
+    result();
 }
 
 function check(){
@@ -254,7 +255,7 @@ function result(){
             }
         }catch(e){
             console.log(e.message);
-        }     
+        }
     }else{
         count++;
         var array = check();
@@ -335,7 +336,7 @@ function blackCheck(black, white){
         }
     }
     var a = num+1;
-    while(a<=right){
+    while(a <= right){
         if(a == right){
             result.length = 0;
             break;
@@ -363,7 +364,7 @@ function blackCheck(black, white){
     }
 
     var b = num-1;
-    while(b>=left){
+    while(b >= left){
         if(b == left){
             result.length = 0;
             break;
@@ -384,9 +385,8 @@ function blackCheck(black, white){
 
     //上側判定処理
     var top = num % 8;
-
     var m = num - 8;
-    while(m>=top){
+    while(m >= top){
         if(m == top){
             result.length = 0;
             break;
@@ -402,14 +402,13 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        m = m - 8;
+        m -= 8;
     }
 
     //下側判定処理
     var bottom = num % 8 + 56;
-
     var o = num + 8;
-    while(o<=bottom){
+    while(o <= bottom){
         if(o == bottom){
             result.length = 0;
             break;
@@ -425,20 +424,20 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        o = o + 8;
+        o += 8;
     }
 
     //左上側判定処理
     var upperleft = num;
-    while(upperleft>7){
+    while(upperleft > 7){
         if(upperleft % 8 == 0){
             break;
         }
-        upperleft = upperleft - 9;
+        upperleft -= 9;
     }
 
     var q = num - 9;
-    while(q>=upperleft){
+    while(q >= upperleft){
         if(q == upperleft){
             result.length = 0;
             break;
@@ -454,20 +453,20 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        q = q - 9;
+        q -= 9;
     }
 
     //右上側判定処理
     var upperright = num;
-    while(upperright>7){
+    while(upperright > 7){
         if(upperright % 8 == 7){
             break;
         }
-        upperright = upperright - 7;
+        upperright -= 7;
     }
 
     var s = num - 7;
-    while(s>=upperright){
+    while(s >= upperright){
         if(s == upperright){
             result.length = 0;
             break;
@@ -483,20 +482,20 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        s = s - 7;
+        s -= 7;
     }
 
     //左下側判定処理
     var lowerleft = num;
-    while(lowerleft<56){
+    while(lowerleft < 56){
         if(lowerleft % 8 == 0){
             break;
         }
-        lowerleft = lowerleft + 7;
+        lowerleft += 7;
     }
 
     var u = num + 7;
-    while(u<=lowerleft){
+    while(u <= lowerleft){
         if(u == lowerleft){
             result.length = 0;
             break;
@@ -512,20 +511,20 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        u = u + 7;
+        u += 7;
     }
 
     //右下側判定処理
     var lowerright = num;
-    while(lowerright<56){
+    while(lowerright < 56){
         if(lowerright % 8 == 7){
             break;
         }
-        lowerright = lowerright + 9;
+        lowerright += 9;
     }
 
     var w = num + 9;
-    while(w<=lowerright){
+    while(w <= lowerright){
         if(w == lowerright){
             result.length = 0;
             break;
@@ -541,7 +540,7 @@ function blackCheck(black, white){
             result.length = 0;
             break;
         }
-        w = w + 9;
+        w += 9;
     }
     return resultblack;
 }
@@ -566,7 +565,7 @@ function whiteCheck(black, white){
             break;
         }
     }
-    while(j<=right){
+    while(j <= right){
         if(j == right){
             result.length = 0;
             break;
@@ -592,7 +591,7 @@ function whiteCheck(black, white){
             break;
         }
     }
-    while(k>=left){
+    while(k >= left){
         if(k == left){
             result.length = 0;
             break;
@@ -613,9 +612,8 @@ function whiteCheck(black, white){
 
     //上側判定処理
     var top = num % 8;
-
     var m = l;
-    while(m>=top){
+    while(m >= top){
         if(m == top){
             result.length = 0;
             break;
@@ -631,14 +629,13 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var m = m - 8;
+        m -= 8;
     }
 
     //下側判定処理
     var bottom = num % 8 + 56;
-
     var o = n;
-    while(o<=bottom){
+    while(o <= bottom){
         if(o == bottom){
             result.length = 0;
             break;
@@ -654,20 +651,20 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var o = o + 8;
+        o += 8;
     }
 
     //左上側判定処理
     var upperleft = num;
-    while(upperleft>7){
+    while(upperleft > 7){
         if(upperleft % 8 == 0){
             break;
         }
-        upperleft = upperleft - 9;
+        upperleft -= 9;
     }
 
     var q = p;
-    while(q>=upperleft){
+    while(q >= upperleft){
         if(q == upperleft){
             result.length = 0;
             break;
@@ -683,20 +680,20 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var q = q - 9;
+        q -= 9;
     }
 
     //右上側判定処理
     var upperright = num;
-    while(upperright>7){
+    while(upperright > 7){
         if(upperright % 8 == 7){
             break;
         }
-        upperright = upperright - 7;
+        upperright -= 7;
     }
 
     var s = r;
-    while(s>=upperright){
+    while(s >= upperright){
         if(s == upperright){
             result.length = 0;
             break;
@@ -712,20 +709,20 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var s = s - 7;
+        s -= 7;
     }
 
     //左下側判定処理
     var lowerleft = num;
-    while(lowerleft<56){
+    while(lowerleft < 56){
         if(lowerleft % 8 == 0){
             break;
         }
-        lowerleft = lowerleft + 7;
+        lowerleft += 7;
     }
 
     var u = t;
-    while(u<=lowerleft){
+    while(u <= lowerleft){
         if(u == lowerleft){
             result.length = 0;
             break;
@@ -741,20 +738,20 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var u = u + 7;
+        u += 7;
     }
 
     //右下側判定処理
     var lowerright = num;
-    while(lowerright<56){
+    while(lowerright < 56){
         if(lowerright % 8 == 7){
             break;
         }
-        lowerright = lowerright + 9;
+        lowerright += 9;
     }
 
     var w = v;
-    while(w<=lowerright){
+    while(w <= lowerright){
         if(w == lowerright){
             result.length = 0;
             break;
@@ -770,7 +767,7 @@ function whiteCheck(black, white){
             result.length = 0;
             break;
         }
-        var w = w + 9;
+        w += 9;
     }
     return resultwhite;
 }
