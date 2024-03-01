@@ -770,7 +770,7 @@ function whiteCheck(black, white){
     <input type="radio" id="select2" name="select2" value="0" checked>先攻
     <input type="radio" id="select2" name="select2" value="1" <?php if(isset($_GET['select2']) && $_GET['select2'] == 1) echo'checked' ?>>後攻
     </span>
-    <input type="submit" value="決定">
+    <input type="submit" id="submit" value="決定">
     <?php
     /**
     if($_GET['select'] == 0){
