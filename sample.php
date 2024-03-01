@@ -30,9 +30,9 @@ window.onload = () => {
         $("#sample2").hide();
     }
     if(count % 2 == 1){
-        $("#text").html("<br>白(○)の順番です。");
+        $("#text").html("<br>○の順番です。");
     }else{
-        $("#text").html("<br>黒(●)の順番です。");
+        $("#text").html("<br>●の順番です。");
     }
     view();
     result();
@@ -54,16 +54,16 @@ function view(){
     for(var i=0; i<hantei2.length; i++){
         $("#button" + hantei2[i]).text("○");
     }
-    $("#text2").html("<br>黒(●) " + hantei1.length + "　白(○) " + hantei2.length);
+    $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
 }
 
 /**
 $(document).on('click', '#pass', function(){
     count++;
     if(count % 2 == 1){
-        $("#text").html("<br>白(○)の順番です。");
+        $("#text").html("<br>○の順番です。");
     }else{
-        $("#text").html("<br>黒(●)の順番です。");
+        $("#text").html("<br>●の順番です。");
     }
 });
 */
@@ -108,9 +108,9 @@ function player(num){
     //console.log(hantei1);
     //onsole.log(hantei2);
     if(count % 2 == 1){
-        $("#text").html("<br>白(○)の順番です。");
+        $("#text").html("<br>○の順番です。");
     }else{
-        $("#text").html("<br>黒(●)の順番です。");
+        $("#text").html("<br>●の順番です。");
     }
     view();
     result();
@@ -243,10 +243,10 @@ function result(){
     if(hantei1.length + hantei2.length == 64){
         if(hantei1.length > hantei2.length){
             alert('黒の勝ち!');
-            $("#text").html("<br>黒(●)の勝ちです!");
+            $("#text").html("<br>●の勝ちです!");
         }else if(hantei1.length < hantei2.length){
             alert('白の勝ち!');
-            $("#text").html("<br>白(○)の勝ちです!");
+            $("#text").html("<br>○の勝ちです!");
         }else{
             alert('引き分け');
             $("#text").html("<br>引き分けです!");
@@ -257,7 +257,7 @@ function result(){
         var array = check();
         if(array['max'] == 0){
             if(parseInt(<?= $_GET['select'] ?>) == 1 && parseInt(<?= $_GET['select2'] ?>) == 0){
-                alert('パスです。');
+                alert('パスです');
                 //count++;
                 var array2 = check();
                 hantei2.push(array2['num']);
@@ -268,7 +268,7 @@ function result(){
                 }
                 view();
             }else if(parseInt(<?= $_GET['select'] ?>) == 1 && parseInt(<?= $_GET['select2'] ?>) == 1){
-                alert('パスです。');
+                alert('パスです');
                 //count++;
                 var array2 = check();
                 hantei1.push(array2['num']);
@@ -279,21 +279,21 @@ function result(){
                 }
                 view();
             }else{
-                alert('パスです。');
+                alert('パスです');
                 if(count % 2 == 1){
-                    $("#text").html("<br>白(○)の順番です。");
+                    $("#text").html("<br>○の順番です。");
                 }else{
-                    $("#text").html("<br>黒(●)の順番です。");
+                    $("#text").html("<br>●の順番です。");
                 }
             }
             /** 
             if(hantei1.length + hantei2.length == 64){
                 if(hantei1.length > hantei2.length){
                     alert('黒の勝ち!');
-                    $("#text").html("<br>黒(●)の勝ちです!");
+                    $("#text").html("<br>●の勝ちです!");
                 }else if(hantei1.length < hantei2.length){
                     alert('白の勝ち!');
-                    $("#text").html("<br>白(○)の勝ちです!");
+                    $("#text").html("<br>○の勝ちです!");
                 }else{
                     alert('引き分け');
                     $("#text").html("<br>引き分けです!");
