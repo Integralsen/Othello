@@ -134,20 +134,22 @@ function player2(num){
                 hantei1.push(changeblack[i]);
                 //$("#button" + changeblack[i]).text("●");
             }
-            count++;
-            var array = check();
-            if(array['max'] == 0){
-                //count--;
-                alert('cpuはパスです!');
-            }else{
-                //result();
-                hantei2.push(array['num']);
-                changewhite = whiteCheck(hantei1, hantei2);
-                for(var i=0; i<changewhite.length; i++){
-                    hantei1.splice($.inArray(changewhite[i], hantei1), 1);
-                    hantei2.push(changewhite[i]);
+            if(hantei1.length + hantei2.length < 64){
+                count++;
+                var array = check();
+                if(array['max'] == 0){
+                    //count--;
+                    alert('cpuはパスです!');
+                }else{
+                    //result();
+                    hantei2.push(array['num']);
+                    changewhite = whiteCheck(hantei1, hantei2);
+                    for(var i=0; i<changewhite.length; i++){
+                        hantei1.splice($.inArray(changewhite[i], hantei1), 1);
+                        hantei2.push(changewhite[i]);
+                    }
+                    //result();
                 }
-                //result();
             }
         }
     }else{
@@ -166,20 +168,22 @@ function player2(num){
                 hantei2.push(changewhite[i]);
                 //$("#button" + changewhite[i]).text("●");
             }
-            count++;
-            var array = check();
-            if(array['max'] == 0){
-                //count--;
-                alert('cpuはパスです!');
-            }else{
-                //result();
-                hantei1.push(array['num']);
-                changeblack = blackCheck(hantei1, hantei2);
-                for(var i=0; i<changeblack.length; i++){
-                    hantei2.splice($.inArray(changeblack[i], hantei2), 1);
-                    hantei1.push(changeblack[i]);
+            if(hantei1.length + hantei2.length < 64){
+                count++;
+                var array = check();
+                if(array['max'] == 0){
+                    //count--;
+                    alert('cpuはパスです!');
+                }else{
+                    //result();
+                    hantei1.push(array['num']);
+                    changeblack = blackCheck(hantei1, hantei2);
+                    for(var i=0; i<changeblack.length; i++){
+                        hantei2.splice($.inArray(changeblack[i], hantei2), 1);
+                        hantei1.push(changeblack[i]);
+                    }
+                    //result();
                 }
-                //result();
             }
         }
     }
@@ -236,26 +240,18 @@ function check(){
 }
 
 function result(){
-    if(hantei1.length + hantei2.length >= 64){
-        const flag = true;
-        try{
-            if(hantei1.length > hantei2.length){
-                alert('黒の勝ち!');
-                $("#text").html("<br>黒(●)の勝ちです!");
-            }else if(hantei1.length < hantei2.length){
-                alert('白の勝ち!');
-                $("#text").html("<br>白(○)の勝ちです!");
-            }else{
-                alert('引き分け');
-                $("#text").html("<br>引き分けです!");
-            }
-            view();
-            if(flag){
-                throw new Error();
-            }
-        }catch(e){
-            console.log(e.message);
+    if(hantei1.length + hantei2.length == 64){
+        if(hantei1.length > hantei2.length){
+            alert('黒の勝ち!');
+            $("#text").html("<br>黒(●)の勝ちです!");
+        }else if(hantei1.length < hantei2.length){
+            alert('白の勝ち!');
+            $("#text").html("<br>白(○)の勝ちです!");
+        }else{
+            alert('引き分け');
+            $("#text").html("<br>引き分けです!");
         }
+        view();
     }else{
         count++;
         var array = check();
@@ -289,28 +285,22 @@ function result(){
                 }else{
                     $("#text").html("<br>黒(●)の順番です。");
                 }
-            }    
-            if(hantei1.length + hantei2.length >= 64){
-                const flag = true;
-                try{
-                    if(hantei1.length > hantei2.length){
-                        alert('黒の勝ち!');
-                        $("#text").html("<br>黒(●)の勝ちです!");
-                    }else if(hantei1.length < hantei2.length){
-                        alert('白の勝ち!');
-                        $("#text").html("<br>白(○)の勝ちです!");
-                    }else{
-                        alert('引き分け');
-                        $("#text").html("<br>引き分けです!");
-                    }
-                    view();
-                    if(flag){
-                        throw new Error();
-                    }
-                }catch(e){
-                    console.log(e.message);
-                }
             }
+            /** 
+            if(hantei1.length + hantei2.length == 64){
+                if(hantei1.length > hantei2.length){
+                    alert('黒の勝ち!');
+                    $("#text").html("<br>黒(●)の勝ちです!");
+                }else if(hantei1.length < hantei2.length){
+                    alert('白の勝ち!');
+                    $("#text").html("<br>白(○)の勝ちです!");
+                }else{
+                    alert('引き分け');
+                    $("#text").html("<br>引き分けです!");
+                }
+                view();
+            }
+            */
         }else{
             count--;
         }
