@@ -29,6 +29,7 @@ window.onload = () => {
     result();
 }
 
+/**
 $(document).on('click', '#select', function(){
     var val = $('input[name="select"]:checked').val();
     if(val != 1){
@@ -37,6 +38,7 @@ $(document).on('click', '#select', function(){
         $("#sample2").show();
     }
 });
+*/
 
 function $_GET(param) {
     return new URL(location).searchParams.get(param);
@@ -52,7 +54,6 @@ function view(){
     $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
 }
 
-/**
 $(document).on('click', '#pass', function(){
     count++;
     if(count % 2 == 1){
@@ -61,7 +62,6 @@ $(document).on('click', '#pass', function(){
         $("#text").html("<br>●の順番です。");
     }
 });
-*/
 
 function player(num){
     count++;
@@ -69,39 +69,31 @@ function player(num){
         var changeblack = [];
         hantei1.push(num);
         changeblack = blackCheck(hantei1, hantei2);
-        //console.log(changeblack);
         if(changeblack.length == 0){
             count--;
             hantei1.splice($.inArray(num, hantei1), 1);
             alert('この場所には置けません!');
         }else{
-            //$("#button" + num).text("●");
             for(var i=0; i<changeblack.length; i++){
                 hantei2.splice($.inArray(changeblack[i], hantei2), 1);
                 hantei1.push(changeblack[i]);
-                //$("#button" + changeblack[i]).text("●");
             }
         }
     }else{
         var changewhite = [];
         hantei2.push(num);
         changewhite = whiteCheck(hantei1, hantei2);
-        //console.log(changewhite);
         if(changewhite.length == 0){
             count--;
             hantei2.splice($.inArray(num, hantei2), 1);
             alert('この場所には置けません!');
         }else{
-            //$("#button" + num).text("○");
             for(var i=0; i<changewhite.length; i++){
                 hantei1.splice($.inArray(changewhite[i], hantei1), 1);
                 hantei2.push(changewhite[i]);
-                //$("#button" + changewhite[i]).text("○");
             }
         }
     }
-    //console.log(hantei1);
-    //onsole.log(hantei2);
     if(count % 2 == 1){
         $("#text").html("<br>○の順番です。");
     }else{
@@ -117,33 +109,27 @@ function player2(num){
         var changeblack = [];
         hantei1.push(num);
         changeblack = blackCheck(hantei1, hantei2);
-        //console.log(changeblack);
         if(changeblack.length == 0){
             count--;
             hantei1.splice($.inArray(num, hantei1), 1);
             alert('この場所には置けません!');
         }else{
-            //$("#button" + num).text("●");
             for(var i=0; i<changeblack.length; i++){
                 hantei2.splice($.inArray(changeblack[i], hantei2), 1);
                 hantei1.push(changeblack[i]);
-                //$("#button" + changeblack[i]).text("●");
             }
             if(hantei1.length + hantei2.length < 64){
                 count++;
                 var array = check();
                 if(array['max'] == 0){
-                    //count--;
                     alert('cpuはパスです!');
                 }else{
-                    //result();
                     hantei2.push(array['num']);
                     changewhite = whiteCheck(hantei1, hantei2);
                     for(var i=0; i<changewhite.length; i++){
                         hantei1.splice($.inArray(changewhite[i], hantei1), 1);
                         hantei2.push(changewhite[i]);
                     }
-                    //result();
                 }
             }
         }
@@ -151,39 +137,31 @@ function player2(num){
         var changewhite = [];
         hantei2.push(num);
         changewhite = whiteCheck(hantei1, hantei2);
-        //console.log(changewhite);
         if(changewhite.length == 0){
             count--;
             hantei2.splice($.inArray(num, hantei2), 1);
             alert('この場所には置けません!');
         }else{
-            //$("#button" + num).text("●");
             for(var i=0; i<changewhite.length; i++){
                 hantei1.splice($.inArray(changewhite[i], hantei1), 1);
                 hantei2.push(changewhite[i]);
-                //$("#button" + changewhite[i]).text("●");
             }
             if(hantei1.length + hantei2.length < 64){
                 count++;
                 var array = check();
                 if(array['max'] == 0){
-                    //count--;
                     alert('cpuはパスです!');
                 }else{
-                    //result();
                     hantei1.push(array['num']);
                     changeblack = blackCheck(hantei1, hantei2);
                     for(var i=0; i<changeblack.length; i++){
                         hantei2.splice($.inArray(changeblack[i], hantei2), 1);
                         hantei1.push(changeblack[i]);
                     }
-                    //result();
                 }
             }
         }
     }
-    //console.log(hantei1);
-    //console.log(hantei2);
     view();
     result();
 }
@@ -287,21 +265,6 @@ function result(){
                     $("#text").html("<br>●の順番です。");
                 }
             }
-            /** 
-            if(hantei1.length + hantei2.length == 64){
-                if(hantei1.length > hantei2.length){
-                    alert('黒の勝ち!');
-                    $("#text").html("<br>●の勝ちです!");
-                }else if(hantei1.length < hantei2.length){
-                    alert('白の勝ち!');
-                    $("#text").html("<br>○の勝ちです!");
-                }else{
-                    alert('引き分け');
-                    $("#text").html("<br>引き分けです!");
-                }
-                view();
-            }
-            */
         }else{
             count--;
         }
