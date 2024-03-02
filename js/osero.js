@@ -29,7 +29,6 @@ window.onload = () => {
     result();
 }
 
-/**
 $(document).on('click', '#select', function(){
     var val = $('input[name="select"]:checked').val();
     if(val != 1){
@@ -38,7 +37,6 @@ $(document).on('click', '#select', function(){
         $("#sample2").show();
     }
 });
-*/
 
 function $_GET(param) {
     return new URL(location).searchParams.get(param);
@@ -54,6 +52,7 @@ function view(){
     $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
 }
 
+/**
 $(document).on('click', '#pass', function(){
     count++;
     if(count % 2 == 1){
@@ -62,6 +61,7 @@ $(document).on('click', '#pass', function(){
         $("#text").html("<br>●の順番です。");
     }
 });
+*/
 
 function player(num){
     count++;
