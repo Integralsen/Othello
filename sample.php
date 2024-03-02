@@ -252,6 +252,12 @@ function result(){
             $("#text").html("<br>引き分けです!");
         }
         view();
+    }else if(hantei2.length == 0 && hantei1.length > 0){
+        alert('黒の勝ち!');
+        $("#text").html("<br>●の勝ちです!");
+    }else if(hantei1.length == 0 && hantei2.length > 0){
+        alert('白の勝ち!');
+        $("#text").html("<br>○の勝ちです!");
     }else{
         count++;
         var array = check();
