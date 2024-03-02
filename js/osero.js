@@ -38,6 +38,17 @@ $(document).on('click', '#select', function(){
     }
 });
 
+/**
+$(document).on('click', '#pass', function(){
+    count++;
+    if(count % 2 == 1){
+        $("#text").html("<br>○の順番です。");
+    }else{
+        $("#text").html("<br>●の順番です。");
+    }
+});
+*/
+
 function $_GET(param) {
     return new URL(location).searchParams.get(param);
 }
@@ -51,17 +62,6 @@ function view(){
     }
     $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
 }
-
-/**
-$(document).on('click', '#pass', function(){
-    count++;
-    if(count % 2 == 1){
-        $("#text").html("<br>○の順番です。");
-    }else{
-        $("#text").html("<br>●の順番です。");
-    }
-});
-*/
 
 function player(num){
     count++;
