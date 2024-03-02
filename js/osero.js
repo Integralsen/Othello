@@ -38,7 +38,6 @@ $(document).on('click', '#select', function(){
     }
 });
 
-/**
 $(document).on('click', '#pass', function(){
     count++;
     if(count % 2 == 1){
@@ -47,7 +46,6 @@ $(document).on('click', '#pass', function(){
         $("#text").html("<br>●の順番です。");
     }
 });
-*/
 
 function $_GET(param) {
     return new URL(location).searchParams.get(param);
