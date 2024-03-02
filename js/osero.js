@@ -217,20 +217,25 @@ function result(){
         if(hantei1.length > hantei2.length){
             alert('黒の勝ち!');
             $("#text").html("<br>●の勝ちです!");
+            $("#pass").hide();
         }else if(hantei1.length < hantei2.length){
             alert('白の勝ち!');
             $("#text").html("<br>○の勝ちです!");
+            $("#pass").hide();
         }else{
             alert('引き分け');
             $("#text").html("<br>引き分けです!");
+            $("#pass").hide();
         }
         view();
     }else if(hantei2.length == 0 && hantei1.length > 0){
         alert('黒の勝ち!');
         $("#text").html("<br>●の勝ちです!");
+        $("#pass").hide();
     }else if(hantei1.length == 0 && hantei2.length > 0){
         alert('白の勝ち!');
         $("#text").html("<br>○の勝ちです!");
+        $("#pass").hide();
     }else{
         count++;
         var array = check();
