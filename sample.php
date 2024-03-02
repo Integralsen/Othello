@@ -18,7 +18,7 @@
     <input type="submit" id="submit" value="決定">
     <?php
     /**
-    if($_GET['select'] == 0){
+    if(!isset($_GET['select']) || $_GET['select'] == 0){
         echo '<input type="button" id="pass" value="パス">';
     }
     */
