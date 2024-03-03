@@ -103,72 +103,74 @@ function player(num){
 }
 
 function player2(num){
-    count++;
-    if(count % 2 == 1){
-        var changeblack = [];
-        hantei1.push(num);
-        changeblack = blackCheck(hantei1, hantei2);
-        if(changeblack.length == 0){
-            if(!bool){
-                return;
+    if(!(hantei1.includes(num) || hantei2.includes(num))){
+        count++;
+        if(count % 2 == 1){
+            var changeblack = [];
+            hantei1.push(num);
+            changeblack = blackCheck(hantei1, hantei2);
+            if(changeblack.length == 0){
+                count--;
+                hantei1.splice($.inArray(num, hantei1), 1);
+                if(!bool){
+                    return;
+                }
+                alert('この場所には置けません!');
+            }else{
+                for(var i=0; i<changeblack.length; i++){
+                    hantei2.splice($.inArray(changeblack[i], hantei2), 1);
+                    hantei1.push(changeblack[i]);
+                }
+                if(hantei1.length + hantei2.length < 64){
+                    count++;
+                    var array = check();
+                    if(array['max'] == 0){
+                        alert('cpuはパスです!');
+                    }else{
+                        hantei2.push(array['num']);
+                        changewhite = whiteCheck(hantei1, hantei2);
+                        for(var i=0; i<changewhite.length; i++){
+                            hantei1.splice($.inArray(changewhite[i], hantei1), 1);
+                            hantei2.push(changewhite[i]);
+                        }
+                    }
+                }
             }
-            count--;
-            hantei1.splice($.inArray(num, hantei1), 1);
-            alert('この場所には置けません!');
         }else{
-            for(var i=0; i<changeblack.length; i++){
-                hantei2.splice($.inArray(changeblack[i], hantei2), 1);
-                hantei1.push(changeblack[i]);
-            }
-            if(hantei1.length + hantei2.length < 64){
-                count++;
-                var array = check();
-                if(array['max'] == 0){
-                    alert('cpuはパスです!');
-                }else{
-                    hantei2.push(array['num']);
-                    changewhite = whiteCheck(hantei1, hantei2);
-                    for(var i=0; i<changewhite.length; i++){
-                        hantei1.splice($.inArray(changewhite[i], hantei1), 1);
-                        hantei2.push(changewhite[i]);
+            var changewhite = [];
+            hantei2.push(num);
+            changewhite = whiteCheck(hantei1, hantei2);
+            if(changewhite.length == 0){
+                count--;
+                hantei2.splice($.inArray(num, hantei2), 1);
+                if(!bool){
+                    return;
+                }
+                alert('この場所には置けません!');
+            }else{
+                for(var i=0; i<changewhite.length; i++){
+                    hantei1.splice($.inArray(changewhite[i], hantei1), 1);
+                    hantei2.push(changewhite[i]);
+                }
+                if(hantei1.length + hantei2.length < 64){
+                    count++;
+                    var array = check();
+                    if(array['max'] == 0){
+                        alert('cpuはパスです!');
+                    }else{
+                        hantei1.push(array['num']);
+                        changeblack = blackCheck(hantei1, hantei2);
+                        for(var i=0; i<changeblack.length; i++){
+                            hantei2.splice($.inArray(changeblack[i], hantei2), 1);
+                            hantei1.push(changeblack[i]);
+                        }
                     }
                 }
             }
         }
-    }else{
-        var changewhite = [];
-        hantei2.push(num);
-        changewhite = whiteCheck(hantei1, hantei2);
-        if(changewhite.length == 0){
-            if(!bool){
-                return;
-            }
-            count--;
-            hantei2.splice($.inArray(num, hantei2), 1);
-            alert('この場所には置けません!');
-        }else{
-            for(var i=0; i<changewhite.length; i++){
-                hantei1.splice($.inArray(changewhite[i], hantei1), 1);
-                hantei2.push(changewhite[i]);
-            }
-            if(hantei1.length + hantei2.length < 64){
-                count++;
-                var array = check();
-                if(array['max'] == 0){
-                    alert('cpuはパスです!');
-                }else{
-                    hantei1.push(array['num']);
-                    changeblack = blackCheck(hantei1, hantei2);
-                    for(var i=0; i<changeblack.length; i++){
-                        hantei2.splice($.inArray(changeblack[i], hantei2), 1);
-                        hantei1.push(changeblack[i]);
-                    }
-                }
-            }
-        }
+        view();
+        result();
     }
-    view();
-    result();
 }
 
 function check(){
