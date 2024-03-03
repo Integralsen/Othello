@@ -1,6 +1,7 @@
 var hantei1 = [28, 35];
 var hantei2 = [27, 36];
 var count = 0;
+bool = true;
 
 window.onload = () => {
     if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
@@ -108,6 +109,9 @@ function player2(num){
         hantei1.push(num);
         changeblack = blackCheck(hantei1, hantei2);
         if(changeblack.length == 0){
+            if(!bool){
+                return;
+            }
             count--;
             hantei1.splice($.inArray(num, hantei1), 1);
             alert('この場所には置けません!');
@@ -136,6 +140,9 @@ function player2(num){
         hantei2.push(num);
         changewhite = whiteCheck(hantei1, hantei2);
         if(changewhite.length == 0){
+            if(!bool){
+                return;
+            }
             count--;
             hantei2.splice($.inArray(num, hantei2), 1);
             alert('この場所には置けません!');
@@ -259,6 +266,8 @@ function result(){
         if(array['max'] == 0){
             if(parseInt($_GET('select')) == 1){
                 alert('パスです');
+                bool = false;
+                player2(array2['num']);
             }else{
                 alert('パスです');
                 if(count % 2 == 1){
