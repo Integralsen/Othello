@@ -237,10 +237,27 @@ function result(){
     }else{
         count++;
         var array = check();
+        count++;
+        var array2 = check();
+        count--;
+        if(array['max'] == 0 && array2['max'] == 0){
+            if(hantei1.length > hantei2.length){
+                alert('黒の勝ち!');
+                $("#text").html("<br>●の勝ちです!");
+                $("#pass").hide();
+            }else if(hantei1.length < hantei2.length){
+                alert('白の勝ち!');
+                $("#text").html("<br>○の勝ちです!");
+                $("#pass").hide();
+            }else{
+                alert('引き分け');
+                $("#text").html("<br>引き分けです!");
+                $("#pass").hide();
+            }
+            view();
+        }
         if(array['max'] == 0){
-            if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 0){
-                alert('パスです');
-            }else if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
+            if(parseInt($_GET('select')) == 1){
                 alert('パスです');
             }else{
                 alert('パスです');
