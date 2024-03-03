@@ -181,7 +181,7 @@ function check(){
                 flag = true;
             }
         }
-        if(flag == false){
+        if(!flag){
             if(count % 2 == 1){
                 hantei1.push(i);
                 changeblack = blackCheck(hantei1, hantei2);
@@ -240,26 +240,8 @@ function result(){
         if(array['max'] == 0){
             if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 0){
                 alert('パスです');
-                //count++;
-                var array2 = check();
-                hantei2.push(array2['num']);
-                changewhite = whiteCheck(hantei1, hantei2);
-                for(var i=0; i<changewhite.length; i++){
-                    hantei1.splice($.inArray(changewhite[i], hantei1), 1);
-                    hantei2.push(changewhite[i]);
-                }
-                view();
             }else if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
                 alert('パスです');
-                //count++;
-                var array2 = check();
-                hantei1.push(array2['num']);
-                changeblack = blackCheck(hantei1, hantei2);
-                for(var i=0; i<changeblack.length; i++){
-                    hantei2.splice($.inArray(changeblack[i], hantei2), 1);
-                    hantei1.push(changeblack[i]);
-                }
-                view();
             }else{
                 alert('パスです');
                 if(count % 2 == 1){
