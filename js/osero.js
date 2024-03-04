@@ -68,10 +68,19 @@ function next(){
     count++;
     var array = check();
     for(var i=0; i<64; i++){
+        $("#button" + i).removeClass("black");
+        $("#button" + i).removeClass("white");
+    }
+    for(var i=0; i<64; i++){
         if(!array['next'].includes(i)){
             $("#button" + i).prop("disabled", true);
         }else{
             $("#button" + i).prop("disabled", false);
+            if(count % 2 == 1){
+                $("#button" + i).addClass("black");
+            }else{
+                $("#button" + i).addClass("white");
+            }
         }
     }
     count--;
