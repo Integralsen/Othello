@@ -1,5 +1,5 @@
 <?php
-class Osero{
+class Othello{
     public function getValue($x, $y){
         $result[$x][$y] = "";
 
