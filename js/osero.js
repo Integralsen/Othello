@@ -48,6 +48,7 @@ $(document).on('click', '#pass', function(){
     }else{
         $("#text").html("<br>●の順番です。");
     }
+    next();
 });
 
 function $_GET(param) {
