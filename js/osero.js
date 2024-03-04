@@ -22,11 +22,8 @@ window.onload = () => {
     }else{
         $("#sample2").hide();
     }
-    if(count % 2 == 1){
-        $("#text").html("<br>○の順番です。");
-    }else{
-        $("#text").html("<br>●の順番です。");
-    }
+    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    $("#text").html(str);
     view();
     next();
     result();
@@ -43,11 +40,8 @@ $(document).on('click', '#select', function(){
 
 $(document).on('click', '#pass', function(){
     count++;
-    if(count % 2 == 1){
-        $("#text").html("<br>○の順番です。");
-    }else{
-        $("#text").html("<br>●の順番です。");
-    }
+    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    $("#text").html(str);
     next();
 });
 
@@ -118,11 +112,8 @@ function player(num){
             }
         }
     }
-    if(count % 2 == 1){
-        $("#text").html("<br>○の順番です。");
-    }else{
-        $("#text").html("<br>●の順番です。");
-    }
+    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    $("#text").html(str);
     view();
     next();
     result();
@@ -305,11 +296,8 @@ function result(){
                 player2(array2['num']);
             }else{
                 alert('パスです');
-                if(count % 2 == 1){
-                    $("#text").html("<br>○の順番です。");
-                }else{
-                    $("#text").html("<br>●の順番です。");
-                }
+                var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+                $("#text").html(str);
                 next();
             }
         }else{
