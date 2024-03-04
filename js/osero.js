@@ -14,6 +14,7 @@ window.onload = () => {
             hantei1.push(changeblack[i]);
         }
         view();
+        next();
         result();
     }
     if(parseInt($_GET('select')) == 1){
@@ -27,6 +28,7 @@ window.onload = () => {
         $("#text").html("<br>●の順番です。");
     }
     view();
+    next();
     result();
 }
 
@@ -60,6 +62,19 @@ function view(){
         $("#button" + hantei2[i]).text("○");
     }
     $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
+}
+
+function next(){
+    count++;
+    var array = check();
+    for(var i=0; i<64; i++){
+        if(!array['next'].includes(i)){
+            $("#button" + i).prop("disabled", true);
+        }else{
+            $("#button" + i).prop("disabled", false);
+        }
+    }
+    count--;
 }
 
 function player(num){
@@ -99,6 +114,7 @@ function player(num){
         $("#text").html("<br>●の順番です。");
     }
     view();
+    next();
     result();
 }
 
@@ -169,6 +185,7 @@ function player2(num){
             }
         }
         view();
+        next();
         result();
     }
 }
@@ -177,6 +194,7 @@ function check(){
     var maxchange = 0;
     var cpu = 0;
     var result = [];
+    var list = [];
     var kekka = 0;
     for(var i=0; i<64; i++){
         flag = false;
@@ -195,6 +213,9 @@ function check(){
                 hantei1.push(i);
                 changeblack = blackCheck(hantei1, hantei2);
                 result.push(changeblack.length);
+                if(changeblack.length > 0){
+                    list.push(i);
+                }
                 if(maxchange < changeblack.length){
                     maxchange = changeblack.length;
                     cpu = i;
@@ -204,6 +225,9 @@ function check(){
                 hantei2.push(i);
                 changewhite = whiteCheck(hantei1, hantei2);
                 result.push(changewhite.length);
+                if(changewhite.length > 0){
+                    list.push(i);
+                }
                 if(maxchange < changewhite.length){
                     maxchange = changewhite.length;
                     cpu = i;
@@ -215,7 +239,8 @@ function check(){
     kekka = Math.max.apply(null, result);
     return {
         max: kekka,
-        num: cpu
+        num: cpu,
+        next: list
     };
 }
 
@@ -234,7 +259,6 @@ function result(){
             $("#text").html("<br>引き分けです!");
             $("#pass").hide();
         }
-        view();
     }else if(hantei2.length == 0 && hantei1.length > 0){
         alert('黒の勝ち!');
         $("#text").html("<br>●の勝ちです!");
@@ -263,7 +287,6 @@ function result(){
                 $("#text").html("<br>引き分けです!");
                 $("#pass").hide();
             }
-            view();
         }
         if(array['max'] == 0){
             if(parseInt($_GET('select')) == 1){
@@ -277,6 +300,7 @@ function result(){
                 }else{
                     $("#text").html("<br>●の順番です。");
                 }
+                next();
             }
         }else{
             count--;
