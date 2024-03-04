@@ -6,7 +6,7 @@
 </head>
 <body>
 <script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/osero.js"></script>
+<script src="js/othello.js"></script>
 <form method="GET" action="sample.php">
     <div id="sample">
     <input type="radio" id="select" name="select" value="0" checked>手動
@@ -28,15 +28,14 @@
     </div>
 </form>
 <?php
-require_once('osero.php');
+require_once('othello.php');
 $field[][] = "";
 $result[][] = "";
 $num = 0;
-$osero = new Osero();
-$flag = true;
+$othello = new Othello();
 for($i=0; $i<8; $i++){
     for($j=0; $j<8; $j++){
-        $result[$i][$j] = $osero->getValue($i, $j);
+        $result[$i][$j] = $othello->getValue($i, $j);
         if(!isset($_GET['select'])){
             $field[$i][$j] = '<button type="submit" id="button'.$num.'" onclick=player('.$num.');>'.$result[$i][$j].'</button>';
             echo $field[$i][$j];
