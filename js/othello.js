@@ -14,7 +14,9 @@ window.onload = () => {
             hantei1.push(changeblack[i]);
         }
         view();
-        next();
+        if($_GET('assist') == 1){
+            next();
+        }
         result();
     }
     if(parseInt($_GET('select')) == 1){
@@ -25,7 +27,9 @@ window.onload = () => {
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    next();
+    if($_GET('assist') == 1){
+        next();
+    }
     result();
 }
 
@@ -42,7 +46,9 @@ $(document).on('click', '#pass', function(){
     count++;
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
-    next();
+    if($_GET('assist') == 1){
+        next();
+    }
 });
 
 function $_GET(param) {
@@ -115,7 +121,9 @@ function player(num){
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    next();
+    if($_GET('assist') == 1){
+        next();
+    }
     result();
 }
 
@@ -123,6 +131,9 @@ function player2(num){
     if(!(hantei1.includes(num) || hantei2.includes(num))){
         count++;
         if(count % 2 == 1){
+            if(!bool){
+                count--;
+            }
             var changeblack = [];
             hantei1.push(num);
             changeblack = blackCheck(hantei1, hantei2);
@@ -144,16 +155,24 @@ function player2(num){
                     if(array['max'] == 0){
                         alert('cpuはパスです!');
                     }else{
-                        hantei2.push(array['num']);
-                        changewhite = whiteCheck(hantei1, hantei2);
-                        for(var i=0; i<changewhite.length; i++){
-                            hantei1.splice($.inArray(changewhite[i], hantei1), 1);
-                            hantei2.push(changewhite[i]);
+                        if(bool){
+                            hantei2.push(array['num']);
+                            changewhite = whiteCheck(hantei1, hantei2);
+                            for(var i=0; i<changewhite.length; i++){
+                                hantei1.splice($.inArray(changewhite[i], hantei1), 1);
+                                hantei2.push(changewhite[i]);
+                            }
                         }
                     }
                 }
+                if(!bool){
+                    bool = true;
+                }
             }
         }else{
+            if(!bool){
+                count--;
+            }
             var changewhite = [];
             hantei2.push(num);
             changewhite = whiteCheck(hantei1, hantei2);
@@ -175,18 +194,25 @@ function player2(num){
                     if(array['max'] == 0){
                         alert('cpuはパスです!');
                     }else{
-                        hantei1.push(array['num']);
-                        changeblack = blackCheck(hantei1, hantei2);
-                        for(var i=0; i<changeblack.length; i++){
-                            hantei2.splice($.inArray(changeblack[i], hantei2), 1);
-                            hantei1.push(changeblack[i]);
+                        if(bool){
+                            hantei1.push(array['num']);
+                            changeblack = blackCheck(hantei1, hantei2);
+                            for(var i=0; i<changeblack.length; i++){
+                                hantei2.splice($.inArray(changeblack[i], hantei2), 1);
+                                hantei1.push(changeblack[i]);
+                            }
                         }
                     }
+                }
+                if(!bool){
+                    bool = true;
                 }
             }
         }
         view();
-        next();
+        if($_GET('assist') == 1){
+            next();
+        }
         result();
     }
 }
@@ -298,7 +324,9 @@ function result(){
                 alert('パスです');
                 var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
                 $("#text").html(str);
-                next();
+                if($_GET('assist') == 1){
+                    next();
+                }
             }
         }else{
             count--;
