@@ -62,7 +62,7 @@ function view(){
     for(var i=0; i<hantei2.length; i++){
         $("#button" + hantei2[i]).text("○");
     }
-    $("#text2").html("<br>● " + hantei1.length + "　○ " + hantei2.length);
+    $("#text2").html('<br><span id="blackcircle"></span><span id="blacknum">' + hantei1.length + '</span><span id="whitecircle"></span><span id="whitenum">' + hantei2.length + "</span>");
 }
 
 function next(){
