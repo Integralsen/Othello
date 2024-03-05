@@ -9,6 +9,8 @@
 <script src="js/othello.js"></script>
 <form method="GET" action="sample.php">
     <div id="sample">
+    <input type="radio" id="assist" name="assist" value="0" checked>OFF
+    <input type="radio" id="assist" name="assist" value="1" <?php if(isset($_GET['assist']) && $_GET['assist'] == 1) echo 'checked' ?>>ON　(アシスト)<br>
     <input type="radio" id="select" name="select" value="0" checked>手動
     <input type="radio" id="select" name="select" value="1" <?php if(isset($_GET['select']) && $_GET['select'] == 1) echo 'checked' ?>>CPU<br>
     <span id="sample2">
