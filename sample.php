@@ -19,6 +19,7 @@
     </span>
     <input type="submit" id="submit" value="決定">
     <?php
+    //意図的に「パス」する場合はコメントアウトを外す
     /**
     if(!isset($_GET['select']) || $_GET['select'] == 0){
         echo '<input type="button" id="pass" value="パス">';
@@ -35,6 +36,7 @@ $field[][] = "";
 $result[][] = "";
 $num = 0;
 $othello = new Othello();
+//初期盤面のボタンを生成
 for($i=0; $i<8; $i++){
     for($j=0; $j<8; $j++){
         $result[$i][$j] = $othello->getValue($i, $j);
