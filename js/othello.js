@@ -1,9 +1,12 @@
-var hantei1 = [28, 35];
-var hantei2 = [27, 36];
+var hantei1 = [28, 35]; //黒の置かれている場所
+var hantei2 = [27, 36]; //白の置かれている場所
 var corner = [0, 7, 56, 63];
 var count = 0;
 bool = true;
 
+/**
+ * 画面読み込み時の処理
+ */
 window.onload = () => {
     if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
         count++;
@@ -34,6 +37,9 @@ window.onload = () => {
     result();
 }
 
+/**
+ * 「手動」「CPU」選択処理
+ */
 $(document).on('click', '#select', function(){
     var val = $('input[name="select"]:checked').val();
     if(val != 1){
@@ -43,6 +49,9 @@ $(document).on('click', '#select', function(){
     }
 });
 
+/**
+ * 「パス」ボタンクリック時の処理
+ */
 $(document).on('click', '#pass', function(){
     count++;
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
@@ -52,10 +61,18 @@ $(document).on('click', '#pass', function(){
     }
 });
 
+/**
+ * パラメータの値を取得
+ * @param {string} param パラメータ
+ * @return {string}
+ */
 function $_GET(param) {
     return new URL(location).searchParams.get(param);
 }
 
+/**
+ * 盤面等を描画
+ */
 function view(){
     for(var i=0; i<hantei1.length; i++){
         $("#button" + hantei1[i]).text("●");
@@ -66,6 +83,9 @@ function view(){
     $("#text2").html('<br><span id="blackcircle"></span><span id="blacknum">' + hantei1.length + '</span><span id="whitecircle"></span><span id="whitenum">' + hantei2.length + "</span>");
 }
 
+/**
+ * アシストの描画
+ */
 function next(){
     count++;
     var array = check();
@@ -88,6 +108,10 @@ function next(){
     count--;
 }
 
+/**
+ * 「手動」選択時の処理
+ * @param {number} num 盤面の場所
+ */
 function player(num){
     count++;
     if(count % 2 == 1){
@@ -128,6 +152,11 @@ function player(num){
     result();
 }
 
+/**
+ * 「CPU」選択時の処理
+ * @param {number} num 盤面の場所
+ * @return {undefined} 例外
+ */
 function player2(num){
     if(!(hantei1.includes(num) || hantei2.includes(num))){
         flag2 = true;
@@ -157,6 +186,7 @@ function player2(num){
                     if(array['max'] == 0){
                         alert('cpuはパスです!');
                     }else{
+                        //CPUの打つ手を記述
                         if(bool){
                             for(var i=0; i<corner.length; i++){
                                 if(array['next'].includes(corner[i])){
@@ -205,6 +235,7 @@ function player2(num){
                     if(array['max'] == 0){
                         alert('cpuはパスです!');
                     }else{
+                        //CPUの打つ手を記述
                         if(bool){
                             for(var i=0; i<corner.length; i++){
                                 if(array['next'].includes(corner[i])){
@@ -237,6 +268,12 @@ function player2(num){
     }
 }
 
+/**
+ * countの値により黒、白の以下情報を返す
+ * @return {number} max ひっくり返せる最大個数
+ * @return {number} num 最大個数ひっくり返せる場所
+ * @return {array} next 駒が置ける場所
+ */
 function check(){
     var maxchange = 0;
     var cpu = 0;
@@ -291,6 +328,9 @@ function check(){
     };
 }
 
+/**
+ * 勝敗やパスを判定する
+ */
 function result(){
     if(hantei1.length + hantei2.length == 64){
         if(hantei1.length > hantei2.length){
@@ -360,6 +400,12 @@ function result(){
     }
 }
 
+/**
+ * 黒を置いたときにひっくり返す場所を返す
+ * @param {array} black 黒の置かれている場所
+ * @param {array} white 白の置かれている場所
+ * @return {array} resultblack 白から黒に変わる場所
+ */
 function blackCheck(black, white){
     var num = black[black.length-1];
     var a = num + 1;
@@ -577,6 +623,12 @@ function blackCheck(black, white){
     return resultblack;
 }
 
+/**
+ * 白を置いたときにひっくり返す場所を返す
+ * @param {array} black 黒の置かれている場所
+ * @param {array} white 白の置かれている場所
+ * @return {array} resultwhite 黒から白に代わる場所
+ */
 function whiteCheck(black, white){
     var num = white[white.length-1];
     var j = num + 1;
