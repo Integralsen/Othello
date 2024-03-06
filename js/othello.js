@@ -160,7 +160,6 @@ function player2(num){
                         if(bool){
                             for(var i=0; i<corner.length; i++){
                                 if(array['next'].includes(corner[i])){
-                                    console.log('ok');
                                     flag2 = false;
                                     hantei2.push(corner[i]);
                                     break;
