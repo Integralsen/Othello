@@ -1,5 +1,6 @@
 <?php
 class Othello{
+    //初期盤面の値を生成
     public function getValue($x, $y){
         $result[$x][$y] = "";
 
