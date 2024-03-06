@@ -270,8 +270,8 @@ function player2(num){
 
 /**
  * countの値により黒または白の以下情報を返す
- * @return {number} max ひっくり返せる最大個数
- * @return {number} num 最大個数ひっくり返せる場所
+ * @return {number} max ひっくり返す最大個数
+ * @return {number} num 最大個数ひっくり返す場所
  * @return {array} next 駒が置ける場所
  */
 function check(){
