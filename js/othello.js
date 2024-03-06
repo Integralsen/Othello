@@ -129,6 +129,7 @@ function player(num){
 
 function player2(num){
     if(!(hantei1.includes(num) || hantei2.includes(num))){
+        flag2 = true;
         count++;
         if(count % 2 == 1){
             if(!bool){
@@ -156,7 +157,17 @@ function player2(num){
                         alert('cpuはパスです!');
                     }else{
                         if(bool){
-                            hantei2.push(array['num']);
+                            for(var i=0; i<corner.length; i++){
+                                if(array['next'].includes(corner[i])){
+                                    console.log('ok');
+                                    flag2 = false;
+                                    hantei2.push(corner[i]);
+                                    break;
+                                }
+                            }
+                            if(flag2){
+                                hantei2.push(array['num']);
+                            }
                             changewhite = whiteCheck(hantei1, hantei2);
                             for(var i=0; i<changewhite.length; i++){
                                 hantei1.splice($.inArray(changewhite[i], hantei1), 1);
@@ -195,7 +206,16 @@ function player2(num){
                         alert('cpuはパスです!');
                     }else{
                         if(bool){
-                            hantei1.push(array['num']);
+                            for(var i=0; i<corner.length; i++){
+                                if(array['next'].includes(corner[i])){
+                                    flag2 = false;
+                                    hantei1.push(corner[i]);
+                                    break;
+                                }
+                            }
+                            if(flag2){
+                                hantei1.push(array['num']);
+                            }
                             changeblack = blackCheck(hantei1, hantei2);
                             for(var i=0; i<changeblack.length; i++){
                                 hantei2.splice($.inArray(changeblack[i], hantei2), 1);
