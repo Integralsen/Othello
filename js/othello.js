@@ -1,5 +1,6 @@
 var hantei1 = [28, 35];
 var hantei2 = [27, 36];
+var corner = [0, 7, 56, 63];
 var count = 0;
 bool = true;
 
