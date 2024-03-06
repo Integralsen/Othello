@@ -4,6 +4,7 @@ body{
 #sample{
     display: inline-block;
     text-align: left;
+    margin-left: 70px;
     font-size: 20px;
 }
 #assist{
@@ -22,7 +23,7 @@ body{
 #text{
     position: relative;
     top: -5px;
-    font-size: 30px;
+    font-size: 25px;
 }
 #text2{
     font-size: 40px;
@@ -46,7 +47,7 @@ body{
     height: 50px;
     border-radius: 50%;
     border: solid 1px black;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 #whitenum{
     position: relative;
