@@ -1,6 +1,5 @@
 body{
     text-align: center;
-    background-color: #dcdcdc;
 }
 #sample{
     display: inline-block;
@@ -66,4 +65,17 @@ button:hover{
 .white{
     background-color: #2e8b57;
     color: black;
+}
+@media screen and (max-width: 480px){
+    button{
+        background-color: green;
+        border: solid 1px black;
+        width: 40px;
+        height: 40px;
+        padding-bottom: 5px;
+        font-size: 28px;
+    }
+    #sample{
+        font-size: 15px;
+    }
 }
