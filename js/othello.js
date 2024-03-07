@@ -3,6 +3,7 @@ var hantei2 = [27, 36]; //白の置かれている場所
 var corner = [0, 7, 56, 63];
 var count = 0; //手数をカウント
 bool = true;
+nextflag = false;
 
 /**
  * 画面読み込み時の処理
@@ -17,10 +18,7 @@ window.onload = () => {
             hantei2.splice($.inArray(changeblack[i], hantei2), 1);
             hantei1.push(changeblack[i]);
         }
-        view();
-        if($_GET('assist')){
-            next();
-        }
+        nextflag ? next() : nextoff();
         result();
     }
     if(parseInt($_GET('select')) == 1){
@@ -28,14 +26,30 @@ window.onload = () => {
     }else{
         $("#sample2").hide();
     }
+    if($_GET('assist')){
+        nextflag = true;
+    }
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    if($_GET('assist')){
-        next();
-    }
+    nextflag ? next() : nextoff();
     result();
 }
+
+/**
+ * 「アシスト」選択処理
+ */
+$(document).on('click', '#assist', function(){
+    var val = $('input[name="assist"]:checked').val();
+    if(val){
+        nextflag = true;
+        next();
+    }else{
+        nextflag = false;
+        nextnone();
+        nextoff();
+    }
+});
 
 /**
  * 「手動」「CPU」選択処理
@@ -56,9 +70,7 @@ $(document).on('click', '#pass', function(){
     count++;
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
-    if($_GET('assist')){
-        next();
-    }
+    nextflag ? next() : nextoff();
 });
 
 /**
@@ -109,6 +121,25 @@ function next(){
 }
 
 /**
+ * アシストの描画を止める
+ */
+function nextnone(){
+    for(var i=0; i<64; i++){
+        $("#button" + i).removeClass("black");
+        $("#button" + i).removeClass("white");
+    }
+}
+
+/**
+ * 盤面ボタンのロックを外す
+ */
+function nextoff(){
+    for(var i=0; i<64; i++){
+        $("#button" + i).prop("disabled", false);
+    }
+}
+
+/**
  * 「手動」選択時の処理
  * @param {number} num 盤面の場所
  */
@@ -146,9 +177,7 @@ function player(num){
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    if($_GET('assist')){
-        next();
-    }
+    nextflag ? next() : nextoff();
     result();
 }
 
@@ -261,9 +290,7 @@ function player2(num){
             }
         }
         view();
-        if($_GET('assist')){
-            next();
-        }
+        nextflag ? next() : nextoff();
         result();
     }
 }
@@ -384,9 +411,7 @@ function result(){
                 alert('パスです');
                 var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
                 $("#text").html(str);
-                if($_GET('assist')){
-                    next();
-                }
+                nextflag ? next() : nextoff();
             }
         }else{
             count--;
