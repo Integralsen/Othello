@@ -101,10 +101,7 @@ function view(){
 function next(){
     count++;
     var array = check();
-    for(var i=0; i<64; i++){
-        $("#button" + i).removeClass("black");
-        $("#button" + i).removeClass("white");
-    }
+    nextnone();
     for(var i=0; i<64; i++){
         if(!array['next'].includes(i)){
             $("#button" + i).prop("disabled", true);
