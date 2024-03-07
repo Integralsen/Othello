@@ -43,7 +43,6 @@ body{
     margin-left: 20px;
 }
 button{
-    display: inline-block;
     background-color: green;
     border: solid 2px black;
     width: 100px;
