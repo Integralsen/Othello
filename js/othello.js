@@ -1,7 +1,7 @@
 var hantei1 = [28, 35]; //黒の置かれている場所
 var hantei2 = [27, 36]; //白の置かれている場所
 var corner = [0, 7, 56, 63];
-var count = 0;
+var count = 0; //手数をカウント
 bool = true;
 
 /**
@@ -18,7 +18,7 @@ window.onload = () => {
             hantei1.push(changeblack[i]);
         }
         view();
-        if($_GET('assist') == 1){
+        if($_GET('assist')){
             next();
         }
         result();
@@ -31,7 +31,7 @@ window.onload = () => {
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    if($_GET('assist') == 1){
+    if($_GET('assist')){
         next();
     }
     result();
@@ -56,7 +56,7 @@ $(document).on('click', '#pass', function(){
     count++;
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
-    if($_GET('assist') == 1){
+    if($_GET('assist')){
         next();
     }
 });
@@ -146,7 +146,7 @@ function player(num){
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
     view();
-    if($_GET('assist') == 1){
+    if($_GET('assist')){
         next();
     }
     result();
@@ -261,7 +261,7 @@ function player2(num){
             }
         }
         view();
-        if($_GET('assist') == 1){
+        if($_GET('assist')){
             next();
         }
         result();
@@ -384,7 +384,7 @@ function result(){
                 alert('パスです');
                 var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
                 $("#text").html(str);
-                if($_GET('assist') == 1){
+                if($_GET('assist')){
                     next();
                 }
             }
