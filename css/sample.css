@@ -79,4 +79,30 @@ button:hover{
         margin-left: 30px;
         font-size: 15px;
     }
+    #submit{
+        font-size: 12px;
+    }
+    #text{
+        top: -5px;
+        font-size: 20px;
+    }
+    #text2{
+        font-size: 30px;
+    }
+    #blackcircle{
+        width: 35px;
+        height: 35px;
+    }
+    #whitecircle{
+        width: 35px;
+        height: 35px;
+    }
+    #blacknum{
+        top: -7px;
+        margin-left: 15px;
+    }
+    #whitenum{
+        top: -7px;
+        margin-left: 15px;
+    }
 }
