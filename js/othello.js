@@ -206,6 +206,7 @@ function player2(num){
                     hantei2.splice($.inArray(changeblack[i], hantei2), 1);
                     hantei1.push(changeblack[i]);
                 }
+                view();
                 if(hantei1.length + hantei2.length < 64){
                     count++;
                     var array = check();
@@ -255,6 +256,7 @@ function player2(num){
                     hantei1.splice($.inArray(changewhite[i], hantei1), 1);
                     hantei2.push(changewhite[i]);
                 }
+                view();
                 if(hantei1.length + hantei2.length < 64){
                     count++;
                     var array = check();
@@ -286,9 +288,11 @@ function player2(num){
                 }
             }
         }
-        view();
-        nextflag ? next() : nextoff();
-        result();
+        setTimeout(() => {
+            view();
+            nextflag ? next() : nextoff();
+            result();
+        }, 500);
     }
 }
 
