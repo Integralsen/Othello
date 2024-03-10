@@ -9,7 +9,11 @@ nextflag = false;
  * 画面読み込み時の処理
  */
 window.onload = () => {
+    if($_GET('assist')){
+        nextflag = true;
+    }
     if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
+        view();
         count++;
         var array = check();
         hantei1.push(array['num']);
@@ -18,6 +22,13 @@ window.onload = () => {
             hantei2.splice($.inArray(changeblack[i], hantei2), 1);
             hantei1.push(changeblack[i]);
         }
+        setTimeout(() => {
+            view();
+            nextflag ? next() : nextoff();
+            result();
+        }, 500);
+    }else{
+        view();
         nextflag ? next() : nextoff();
         result();
     }
@@ -26,14 +37,8 @@ window.onload = () => {
     }else{
         $("#sample2").hide();
     }
-    if($_GET('assist')){
-        nextflag = true;
-    }
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
-    view();
-    nextflag ? next() : nextoff();
-    result();
 }
 
 /**
