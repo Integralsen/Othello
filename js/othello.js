@@ -32,11 +32,7 @@ window.onload = () => {
         nextflag ? next() : nextoff();
         result();
     }
-    if(parseInt($_GET('select')) == 1){
-        $("#sample2").show();
-    }else{
-        $("#sample2").hide();
-    }
+    parseInt($_GET('select')) == 1 ? $("#sample2").show() : $("#sample2").hide();
     var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
     $("#text").html(str);
 }
@@ -61,11 +57,7 @@ $(document).on('click', '#assist', function(){
  */
 $(document).on('click', '#select', function(){
     var val = $('input[name="select"]:checked').val();
-    if(val != 1){
-        $("#sample2").hide();
-    }else{
-        $("#sample2").show();
-    }
+    val != 1 ? $("#sample2").hide() : $("#sample2").show();
 });
 
 /**
@@ -112,11 +104,7 @@ function next(){
             $("#button" + i).prop("disabled", true);
         }else{
             $("#button" + i).prop("disabled", false);
-            if(count % 2 == 1){
-                $("#button" + i).addClass("black");
-            }else{
-                $("#button" + i).addClass("white");
-            }
+            count % 2 == 1 ? $("#button" + i).addClass("black") : $("#button" + i).addClass("white");
         }
     }
     count--;
