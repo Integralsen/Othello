@@ -5,4 +5,4 @@
 <h2>使い方</h2>
 zipファイルをダウンロードして「sample.php」を開いてください。
 <h2>サンプル</h2>
-<a href="http://integralsen.s322.xrea.com/index.php">テスト</a>
+<a href="http://integralsen.s322.xrea.com/index.php">オセロ</a>
