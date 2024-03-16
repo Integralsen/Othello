@@ -88,14 +88,15 @@ button.kuro{
 button.shiro{
     background: radial-gradient(circle, white calc(90px / 2 - 1px), green calc(90px / 2));
 }
-.black, .white{
-    color: black;
+button.black, button.white{
+    height: 100px;
+    width: 100px;
 }
-.black{
-    background-color: #006400;
+button.black{
+    background: radial-gradient(black, green 30%);
 }
-.white{
-    background-color: #2e8b57;
+button.white{
+    background: radial-gradient(white, green 30%);
 }
 @media screen and (max-width: 780px){
     button{
@@ -113,6 +114,10 @@ button.shiro{
     }
     button.shiro{
         background: radial-gradient(circle, white calc(35px / 2 - 1px), green calc(35px / 2));
+    }
+    button.black, button.white{
+        height: 40px;
+        width: 40px;
     }
     #sample{
         font-size: 15px;
