@@ -303,9 +303,7 @@ function player2(num){
             }
         }
         setTimeout(() => {
-            if(bool){
-                view();
-            }
+            view();
             nextflag ? next() : nextoff();
             result();
         }, 500);
