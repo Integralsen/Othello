@@ -87,6 +87,7 @@ function view(){
         $("#button" + i).removeClass("kuro");
         $("#button" + i).removeClass("shiro");
     }
+    nextnone();
     for(var i=0; i<hantei1.length; i++){
         $("#button" + hantei1[i]).addClass("kuro");
     }
