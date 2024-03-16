@@ -33,7 +33,7 @@ window.onload = () => {
         result();
     }
     parseInt($_GET('select')) == 1 ? $("#sample2").show() : $("#sample2").hide();
-    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
     $("#text").html(str);
 }
 
@@ -65,7 +65,7 @@ $(document).on('click', '#select', function(){
  */
 $(document).on('click', '#pass', function(){
     count++;
-    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
     $("#text").html(str);
     nextflag ? next() : nextoff();
 });
@@ -83,11 +83,15 @@ function $_GET(param) {
  * 盤面等を描画
  */
 function view(){
+    for(var i=0; i<64; i++){
+        $("#button" + i).removeClass("kuro");
+        $("#button" + i).removeClass("shiro");
+    }
     for(var i=0; i<hantei1.length; i++){
-        $("#button" + hantei1[i]).text("●");
+        $("#button" + hantei1[i]).addClass("kuro");
     }
     for(var i=0; i<hantei2.length; i++){
-        $("#button" + hantei2[i]).text("○");
+        $("#button" + hantei2[i]).addClass("shiro");
     }
     $("#text2").html('<br><span id="blackcircle"></span><span id="blacknum">' + hantei1.length + '</span><span id="whitecircle"></span><span id="whitenum">' + hantei2.length + "</span>");
 }
@@ -164,7 +168,7 @@ function player(num){
             }
         }
     }
-    var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+    var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
     $("#text").html(str);
     view();
     nextflag ? next() : nextoff();
@@ -356,11 +360,11 @@ function result(){
     if(hantei1.length + hantei2.length == 64){
         if(hantei1.length > hantei2.length){
             alert('黒の勝ち!');
-            $("#text").html("<br>●の勝ちです!");
+            $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
             $("#pass").hide();
         }else if(hantei1.length < hantei2.length){
             alert('白の勝ち!');
-            $("#text").html("<br>○の勝ちです!");
+            $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
             $("#pass").hide();
         }else{
             alert('引き分け');
@@ -369,11 +373,11 @@ function result(){
         }
     }else if(hantei2.length == 0 && hantei1.length > 0){
         alert('黒の勝ち!');
-        $("#text").html("<br>●の勝ちです!");
+        $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
         $("#pass").hide();
     }else if(hantei1.length == 0 && hantei2.length > 0){
         alert('白の勝ち!');
-        $("#text").html("<br>○の勝ちです!");
+        $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
         $("#pass").hide();
     }else{
         count++;
@@ -384,11 +388,11 @@ function result(){
         if(array['max'] == 0 && array2['max'] == 0){
             if(hantei1.length > hantei2.length){
                 alert('黒の勝ち!');
-                $("#text").html("<br>●の勝ちです!");
+                $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
                 $("#pass").hide();
             }else if(hantei1.length < hantei2.length){
                 alert('白の勝ち!');
-                $("#text").html("<br>○の勝ちです!");
+                $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
                 $("#pass").hide();
             }else{
                 alert('引き分け');
@@ -403,7 +407,7 @@ function result(){
                 player2(array2['num']);
             }else{
                 alert('パスです');
-                var str = count % 2 == 1 ? "<br>○の順番です。" : "<br>●の順番です。";
+                var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
                 $("#text").html(str);
                 nextflag ? next() : nextoff();
             }
