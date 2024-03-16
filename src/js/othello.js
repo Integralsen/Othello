@@ -135,6 +135,15 @@ function nextoff(){
 }
 
 /**
+ * 盤面ボタンをロックする
+ */
+function fix(){
+    for(var i=0; i<64; i++){
+        $("#button" + i).prop("disabled", true);
+    }
+}
+
+/**
  * 「手動」選択時の処理
  * @param {number} num 盤面の場所
  */
@@ -206,6 +215,7 @@ function player2(num){
                 }
                 if(bool){
                     view();
+                    fix();
                 }
                 if(hantei1.length + hantei2.length < 64){
                     count++;
@@ -258,6 +268,7 @@ function player2(num){
                 }
                 if(bool){
                     view();
+                    fix();
                 }
                 if(hantei1.length + hantei2.length < 64){
                     count++;
