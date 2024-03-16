@@ -1,11 +1,17 @@
 body{
     text-align: center;
+    background-color: #dcdcdc;
+    margin-bottom: 20px;
 }
 #sample{
     display: inline-block;
     text-align: left;
     margin-left: 50px;
     font-size: 20px;
+}
+#pass{
+    padding-right: 15px;
+    padding-left: 15px;
 }
 #text{
     position: relative;
@@ -22,6 +28,16 @@ body{
     height: 50px;
     border-radius: 50%;
 }
+#blackcircle2{
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+    background: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
 #blacknum{
     position: relative;
     top: -10px;
@@ -36,20 +52,31 @@ body{
     border: solid 1px black;
     margin-left: 20px;
 }
+#whitecircle2{
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+    background: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid 1px black;
+}
 #whitenum{
     position: relative;
     top: -10px;
     margin-left: 20px;
 }
 button{
+    display: inline-block;
     background-color: green;
     border: solid 2px black;
     width: 100px;
     height: 100px;
     padding-bottom: 15px;
-    font-size: 69px;
 }
-button:hover{
+:hover{
     background-color: #d3d3d3;
 }
 :disabled{
@@ -57,6 +84,16 @@ button:hover{
     background-color: green;
     color: black;
     cursor: not-allowed;
+}
+button.kuro{
+    background: radial-gradient(circle, black calc(90px / 2 - 1px), green calc(90px / 2));
+    height: 100px;
+    width: 100px;
+}
+button.shiro{
+    background: radial-gradient(circle, white calc(90px / 2 - 1px), green calc(90px / 2));
+    height: 100px;
+    width: 100px;
 }
 .black{
     background-color: #006400;
@@ -66,21 +103,37 @@ button:hover{
     background-color: #2e8b57;
     color: black;
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 780px){
     button{
+        display: inline-block;
         background-color: green;
         border: solid 1px black;
         width: 40px;
         height: 40px;
         padding-bottom: 5px;
-        font-size: 28px;
+    }
+    button.kuro{
+        background: radial-gradient(circle, black calc(35px / 2 - 1px), green calc(35px / 2));
+        height: 40px;
+        width: 40px;
+    }
+    button.shiro{
+        background: radial-gradient(circle, white calc(35px / 2 - 1px), green calc(35px / 2));
+        height: 40px;
+        width: 40px;
     }
     #sample{
+        margin-left: 30px;
         font-size: 15px;
     }
-    #submit{
+    #submit, #pass{
         font-size: 12px;
     }
+    #pass{
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
     #text{
         font-size: 20px;
     }
@@ -91,9 +144,15 @@ button:hover{
         width: 35px;
         height: 35px;
     }
+    #blackcircle2{
+        top: 3px;
+    }
     #whitecircle{
         width: 35px;
         height: 35px;
+    }
+    #whitecircle2{
+        top: 3px;
     }
     #blacknum{
         top: -7px;
@@ -103,4 +162,4 @@ button:hover{
         top: -7px;
         margin-left: 15px;
     }
-}
+}	
