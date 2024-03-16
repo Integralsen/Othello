@@ -93,7 +93,7 @@ function view(){
     for(var i=0; i<hantei2.length; i++){
         $("#button" + hantei2[i]).addClass("shiro");
     }
-    $("#text2").html('<br><span id="blackcircle"></span><span id="blacknum">' + hantei1.length + '</span><span id="whitecircle"></span><span id="whitenum">' + hantei2.length + "</span>");
+    $("#text2").html('<br><span id="blackcircle"></span><span id="num">' + hantei1.length + '</span><span id="whitecircle"></span><span id="num">' + hantei2.length + "</span>");
 }
 
 /**
