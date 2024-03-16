@@ -58,18 +58,37 @@
         $num = 0;
         $othello = new Othello();
         //初期盤面のボタンを生成
+        echo '<div id="board">';
         for($i=0; $i<8; $i++){
             for($j=0; $j<8; $j++){
                 $result[$i][$j] = $othello->getValue($i, $j);
                 if(!isset($_GET['select'])){
-                    $field[$i][$j] = '<button type="submit" id="button'.$num.'" onclick=player('.$num.');>'.$result[$i][$j].'</button>';
+                    if($result[$i][$j] == "●"){
+                        $field[$i][$j] = '<span id="elem"><button type="submit" class="kuro" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                    }else if($result[$i][$j] == "○"){
+                        $field[$i][$j] = '<span id="elem"><button type="submit" class="shiro" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                    }else{
+                        $field[$i][$j] = '<span id="elem"><button type="submit" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                    }
                     echo $field[$i][$j];
                     $num++;
                 }else{
                     if($_GET['select'] == 0){
-                        $field[$i][$j] = '<button type="submit" id="button'.$num.'" onclick=player('.$num.');>'.$result[$i][$j].'</button>';
+                        if($result[$i][$j] == "●"){
+                            $field[$i][$j] = '<span id="elem"><button type="submit" class="kuro" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                        }else if($result[$i][$j] == "○"){
+                            $field[$i][$j] = '<span id="elem"><button type="submit" class="shiro" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                        }else{
+                            $field[$i][$j] = '<span id="elem"><button type="submit" id="button'.$num.'" onclick=player('.$num.');></button></span>';
+                        }
                     }else{
-                        $field[$i][$j] = '<button type="submit" id="button'.$num.'" onclick=player2('.$num.');>'.$result[$i][$j].'</button>';
+                        if($result[$i][$j] == "●"){
+                            $field[$i][$j] = '<span id="elem"><button type="submit" class="kuro" id="button'.$num.'" onclick=player2('.$num.');></button></span>';
+                        }else if($result[$i][$j] == "○"){
+                            $field[$i][$j] = '<span id="elem"><button type="submit" class="shiro" id="button'.$num.'" onclick=player2('.$num.');></button></span>';
+                        }else{
+                            $field[$i][$j] = '<span id="elem"><button type="submit" id="button'.$num.'" onclick=player2('.$num.');></button></span>';
+                        }
                     }
                     echo $field[$i][$j];
                     $num++;
@@ -77,6 +96,7 @@
             }
             echo "<br>";
         }
+        echo "</div>";
         ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
