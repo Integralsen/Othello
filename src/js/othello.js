@@ -14,6 +14,7 @@ window.onload = () => {
     }
     if(parseInt($_GET('select')) == 1 && parseInt($_GET('select2')) == 1){
         view();
+        fix();
         count++;
         var array = check();
         hantei1.push(array['num']);
