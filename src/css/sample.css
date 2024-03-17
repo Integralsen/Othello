@@ -1,11 +1,7 @@
 body{
     text-align: center;
-    background-color: #dcdcdc;
     margin-bottom: 20px;
-}
-h1{
-    color: black;
-    text-shadow: 2px 2px 10px #fff, -2px 2px 10px #fff, 2px -2px 10px #fff, -2px -2px 10px #fff;;
+    background-color: #dcdcdc
 }
 #sample{
     display: inline-block;
@@ -69,10 +65,10 @@ button{
     height: 100px;
     padding-bottom: 15px;
 }
-:hover{
+button:hover{
     background-color: #d3d3d3;
 }
-:disabled{
+button:disabled{
     pointer-events: none;
     background-color: green;
     color: black;
