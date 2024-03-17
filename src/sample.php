@@ -8,8 +8,6 @@
         <title>オセロ</title>
     </head>
     <body>
-        <script src="js/jquery-3.4.1.min.js"></script>
-        <script src="js/othello.js"></script>
         <form method="GET" action="sample.php">
             <div id="sample">
                 <div class="form-check form-switch">
@@ -98,6 +96,8 @@
         }
         echo "</div>";
         ?>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/othello.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
