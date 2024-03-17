@@ -121,6 +121,10 @@ button.white{
     #submit, #pass{
         font-size: 12px;
     }
+    #pass{
+        padding-right: 13px;
+        padding-left: 13px;
+    }
     #text{
         font-size: 20px;
     }
