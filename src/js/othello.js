@@ -217,6 +217,8 @@ function player2(num){
                 if(bool){
                     view();
                     fix();
+                }else{
+                    fix();
                 }
                 if(hantei1.length + hantei2.length < 64){
                     count++;
@@ -269,6 +271,8 @@ function player2(num){
                 }
                 if(bool){
                     view();
+                    fix();
+                }else{
                     fix();
                 }
                 if(hantei1.length + hantei2.length < 64){
