@@ -4,6 +4,7 @@ var corner = [0, 7, 56, 63];
 var count = 0; //手数をカウント
 bool = true;
 nextflag = false;
+passflag = false;
 
 /**
  * 画面読み込み時の処理
@@ -248,6 +249,7 @@ function player2(num){
                 }
                 if(!bool){
                     bool = true;
+                    passflag = true;
                 }
             }
         }else{
@@ -303,14 +305,24 @@ function player2(num){
                 }
                 if(!bool){
                     bool = true;
+                    passflag = true;
                 }
             }
         }
-        setTimeout(() => {
-            view();
-            nextflag ? next() : nextoff();
-            result();
-        }, 500);
+        if(passflag){
+            passflag = false;
+            setTimeout(() => {
+                view();
+                nextflag ? next() : nextoff();
+                result();
+            }, 1000);
+        }else{
+            setTimeout(() => {
+                view();
+                nextflag ? next() : nextoff();
+                result();
+            }, 500);
+        }
     }
 }
 
