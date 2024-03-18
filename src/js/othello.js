@@ -5,6 +5,7 @@ var count = 0; //手数をカウント
 bool = true;
 nextflag = false;
 passflag = false;
+resultflag = false;
 
 /**
  * 画面読み込み時の処理
@@ -184,7 +185,9 @@ function player(num){
     $("#text").html(str);
     view();
     nextflag ? next() : nextoff();
-    result();
+    setTimeout(() => {
+        result();
+    }, 100);
 }
 
 /**
@@ -225,7 +228,11 @@ function player2(num){
                     count++;
                     var array = check();
                     if(array['max'] == 0){
-                        alert('cpuはパスです!');
+                        if(bool){
+                            setTimeout(() => {
+                                alert('cpuはパスです!');
+                            }, 550);
+                        }
                     }else{
                         //CPUの打つ手を記述
                         if(bool){
@@ -281,7 +288,11 @@ function player2(num){
                     count++;
                     var array = check();
                     if(array['max'] == 0){
-                        alert('cpuはパスです!');
+                        if(bool){
+                            setTimeout(() => {
+                                alert('cpuはパスです!');
+                            }, 550);
+                        }
                     }else{
                         //CPUの打つ手を記述
                         if(bool){
@@ -314,14 +325,18 @@ function player2(num){
             setTimeout(() => {
                 view();
                 nextflag ? next() : nextoff();
-                result();
             }, 1000);
+            setTimeout(() => {
+                result();
+            }, 1100);
         }else{
             setTimeout(() => {
                 view();
                 nextflag ? next() : nextoff();
-                result();
             }, 500);
+            setTimeout(() => {
+                result();
+            }, 600);
         }
     }
 }
@@ -405,10 +420,12 @@ function result(){
             $("#pass").hide();
         }
     }else if(hantei2.length == 0 && hantei1.length > 0){
+        alert('双方置ける場所がないため終局です');
         alert('黒の勝ち!');
         $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
         $("#pass").hide();
     }else if(hantei1.length == 0 && hantei2.length > 0){
+        alert('双方置ける場所がないため終局です');
         alert('白の勝ち!');
         $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
         $("#pass").hide();
@@ -419,30 +436,36 @@ function result(){
         var array2 = check();
         count--;
         if(array['max'] == 0 && array2['max'] == 0){
+            resultflag = true;
             if(hantei1.length > hantei2.length){
+                alert('双方置ける場所がないため終局です');
                 alert('黒の勝ち!');
                 $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
                 $("#pass").hide();
             }else if(hantei1.length < hantei2.length){
+                alert('双方置ける場所がないため終局です');
                 alert('白の勝ち!');
                 $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
                 $("#pass").hide();
             }else{
+                alert('双方置ける場所がないため終局です');
                 alert('引き分け');
                 $("#text").html("<br>引き分けです!");
                 $("#pass").hide();
             }
         }
         if(array['max'] == 0){
-            if(parseInt($_GET('select')) == 1){
-                alert('パスです');
-                bool = false;
-                player2(array2['num']);
-            }else{
-                alert('パスです');
-                var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
-                $("#text").html(str);
-                nextflag ? next() : nextoff();
+            if(!resultflag){
+                if(parseInt($_GET('select')) == 1){
+                    alert('パスです');
+                    bool = false;
+                    player2(array2['num']);
+                }else{
+                    alert('パスです');
+                    var str = count % 2 == 1 ? '<br><span id="whitecircle2"></span>の順番です。' : '<br><span id="blackcircle2"></span>の順番です。';
+                    $("#text").html(str);
+                    nextflag ? next() : nextoff();
+                }
             }
         }else{
             count--;
