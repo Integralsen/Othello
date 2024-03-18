@@ -5,7 +5,6 @@ var count = 0; //手数をカウント
 bool = true;
 nextflag = false;
 passflag = false;
-resultflag = false;
 
 /**
  * 画面読み込み時の処理
@@ -435,27 +434,25 @@ function result(){
         count++;
         var array2 = check();
         count--;
-        if(array['max'] == 0 && array2['max'] == 0){
-            resultflag = true;
-            if(hantei1.length > hantei2.length){
-                alert('双方置ける場所がないため終局です');
-                alert('黒の勝ち!');
-                $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
-                $("#pass").hide();
-            }else if(hantei1.length < hantei2.length){
-                alert('双方置ける場所がないため終局です');
-                alert('白の勝ち!');
-                $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
-                $("#pass").hide();
-            }else{
-                alert('双方置ける場所がないため終局です');
-                alert('引き分け');
-                $("#text").html("<br>引き分けです!");
-                $("#pass").hide();
-            }
-        }
         if(array['max'] == 0){
-            if(!resultflag){
+            if(array2['max'] == 0){
+                if(hantei1.length > hantei2.length){
+                    alert('双方置ける場所がないため終局です');
+                    alert('黒の勝ち!');
+                    $("#text").html('<br><span id="blackcircle2"></span>の勝ちです!');
+                    $("#pass").hide();
+                }else if(hantei1.length < hantei2.length){
+                    alert('双方置ける場所がないため終局です');
+                    alert('白の勝ち!');
+                    $("#text").html('<br><span id="whitecircle2"></span>の勝ちです!');
+                    $("#pass").hide();
+                }else{
+                    alert('双方置ける場所がないため終局です');
+                    alert('引き分け');
+                    $("#text").html("<br>引き分けです!");
+                    $("#pass").hide();
+                }
+            }else{
                 if(parseInt($_GET('select')) == 1){
                     alert('パスです');
                     bool = false;
