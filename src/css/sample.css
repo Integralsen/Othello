@@ -6,7 +6,7 @@ body{
 #sample{
     display: inline-block;
     text-align: left;
-    margin-left: 50px;
+    left: 50%;
     font-size: 20px;
 }
 #pass{
@@ -117,7 +117,7 @@ button.white{
     }
     #sample{
         position: absolute;
-        left: 18%;
+        left: 32%;
         font-size: 15px;
     }
     #submit, #pass{
@@ -151,6 +151,6 @@ button.white{
 }
 @media screen and (orientation: landscape) {
     #sample{
-    	left: 32%;
+    	left: 39%;
     }
 }
