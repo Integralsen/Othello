@@ -15,7 +15,7 @@ body{
 }
 #text{
     position: relative;
-    top: -5px;
+    top: -10px;
     font-size: 25px;
 }
 #text2{
@@ -116,6 +116,8 @@ button.white{
         width: 40px;
     }
     #sample{
+        position: absolute;
+        left: 18%;
         font-size: 15px;
     }
     #submit, #pass{
@@ -126,10 +128,14 @@ button.white{
         padding-left: 13px;
     }
     #text{
+        top: -5px;
         font-size: 20px;
     }
     #text2{
         font-size: 30px;
+    }
+    #board{
+        margin-top: 190px;
     }
     #blackcircle, #whitecircle{
         width: 35px;
@@ -142,4 +148,9 @@ button.white{
         top: -7px;
         margin-left: 10px;
     }
-}	
+}
+@media screen and (orientation: landscape) {
+    #sample{
+    	left: 32%;
+    }
+}
