@@ -4,9 +4,10 @@ body{
     background-color: #dcdcdc
 }
 #sample{
+    position: absolute;
     display: inline-block;
     text-align: left;
-    left: 50%;
+    margin-left: 200px;
     font-size: 20px;
 }
 #pass{
@@ -56,6 +57,9 @@ body{
     position: relative;
     top: -10px;
     margin-left: 20px;
+}
+#board{
+    margin-top: 250px;
 }
 button{
     display: inline-block;
@@ -116,7 +120,7 @@ button.white{
         width: 40px;
     }
     #sample{
-        position: absolute;
+        margin-left: 0px;
         left: 32%;
         font-size: 15px;
     }
