@@ -1,13 +1,12 @@
 body{
     text-align: center;
     margin-bottom: 50px;
-    background-color: #dcdcdc
+    background-color: #dcdcdc;
 }
 #sample{
-    position: absolute;
     display: inline-block;
     text-align: left;
-    margin-left: 200px;
+    left: 50%;
     font-size: 20px;
 }
 #pass{
@@ -57,9 +56,6 @@ body{
     position: relative;
     top: -10px;
     margin-left: 20px;
-}
-#board{
-    margin-top: 250px;
 }
 button{
     display: inline-block;
@@ -120,7 +116,7 @@ button.white{
         width: 40px;
     }
     #sample{
-        margin-left: 0px;
+        position: absolute;
         left: 32%;
         font-size: 15px;
     }
